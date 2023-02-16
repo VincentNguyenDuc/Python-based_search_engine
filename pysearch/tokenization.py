@@ -1,4 +1,5 @@
 import re
+import hashlib
 
 
 def make_tokens(blob: str, STOP_WORDS: set[str], PUNCTUATION: re.Pattern) -> list:
@@ -35,6 +36,15 @@ def make_ngrams(tokens: list, min_gram=3, max_gram=6):
                 terms[gram].append(position)
 
     return terms
+
+
+def hash_name(term, length=6):
+    """
+        Hash the term and returns a string of the first N letters
+    """
+    encoded_term = term.encode('ascii', errors='ignore')
+    hashed_term = hashlib.md5(encoded_term).hexdigest()
+    return hashed_term[:length]
 
 
 if __name__ == '__main__':
