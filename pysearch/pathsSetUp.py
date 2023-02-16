@@ -1,7 +1,7 @@
 import os
 
 
-class SearchSetUp(object):
+class PathSetUp(object):
 
     def __init__(self, base_directory) -> None:
         """Initialize the folders
@@ -37,4 +37,4 @@ class SearchSetUp(object):
 
 
 if __name__ == '__main__':
-    SearchSetUp(os.path.join(os.getcwd(), "SearchData"))
+    PathSetUp(os.path.join(os.getcwd(), "SearchData"))
