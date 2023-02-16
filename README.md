@@ -1,2 +1,3 @@
-# python-project-template
-Repo template for python projects
+# Python based search engine
+
+A simple search library implementing in python

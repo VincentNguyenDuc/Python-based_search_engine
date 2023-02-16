@@ -1,8 +1,8 @@
 from setuptools import setup
 
-setup(name='package',
-      version='1.0',
-      packages=['package'],
-      entry_points={
-          'console_scripts': ['']
-      })
+setup(
+                name="pysearch",
+    version="1.0.0",
+    description="A simple python search library.",
+    packages=['pysearch']
+)
