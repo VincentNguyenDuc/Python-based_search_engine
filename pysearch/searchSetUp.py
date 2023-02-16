@@ -1,24 +1,7 @@
-
-import re
 import os
-import sys
-import json
-
-import tokenization
 
 
-
-class PySearch(object):
-
-
-    STOP_WORDS = set([
-        'a', 'an', 'and', 'are', 'as', 'at', 'be', 'but', 'by',
-        'for', 'if', 'in', 'into', 'is', 'it',
-        'no', 'not', 'of', 'on', 'or', 's', 'such',
-        't', 'that', 'the', 'their', 'then', 'there', 'these',
-        'they', 'this', 'to', 'was', 'will', 'with'
-    ])
-    PUNCTUATION = re.compile('[~`!@#$%^&*()+={\[}\]|\\:;"\',<.>/?]')
+class SearchSetUp(object):
 
     def __init__(self, base_directory) -> None:
         """Initialize the folders
@@ -54,4 +37,4 @@ class PySearch(object):
 
 
 if __name__ == '__main__':
-    PySearch(os.path.join(os.getcwd(), "SearchData"))
+    SearchSetUp(os.path.join(os.getcwd(), "SearchData"))
