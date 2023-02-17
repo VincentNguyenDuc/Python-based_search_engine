@@ -120,7 +120,7 @@ class SegmentHandler(pathsSetUp.PathSetUp):
             shutil.move(new_seg_file.name, seg_name)
         except OSError:
             os.remove(seg_name)
-            os.rename(new_seg_file.name, seg_name)
+            shutil.move(new_seg_file.name, seg_name)
         return True
 
     
