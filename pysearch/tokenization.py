@@ -1,8 +1,16 @@
 import re
 import hashlib
 
+STOP_WORDS = set([
+       'a', 'an', 'and', 'are', 'as', 'at', 'be', 'but', 'by',
+       'for', 'if', 'in', 'into', 'is', 'it',
+       'no', 'not', 'of', 'on', 'or', 's', 'such',
+       't', 'that', 'the', 'their', 'then', 'there', 'these',
+       'they', 'this', 'to', 'was', 'will', 'with'
+   ])
+PUNCTUATION = re.compile('[~`!@#$%^&*()+={\[}\]|\\:;"\',<.>/?]')
 
-def make_tokens(blob: str, STOP_WORDS: set[str], PUNCTUATION: re.Pattern) -> list:
+def make_tokens(blob: str, STOP_WORDS=STOP_WORDS, PUNCTUATION=PUNCTUATION) -> list:
     """
     Given a string of text, return a list of tokens
     """
@@ -49,19 +57,10 @@ def hash_name(term, length=6):
 
 if __name__ == '__main__':
 
-    # SET UP
-    STOP_WORDS = set([
-        'a', 'an', 'and', 'are', 'as', 'at', 'be', 'but', 'by',
-        'for', 'if', 'in', 'into', 'is', 'it',
-        'no', 'not', 'of', 'on', 'or', 's', 'such',
-        't', 'that', 'the', 'their', 'then', 'there', 'these',
-        'they', 'this', 'to', 'was', 'will', 'with'
-    ])
-    PUNCTUATION = re.compile('[~`!@#$%^&*()+={\[}\]|\\:;"\',<.>/?]')
     blob = 'Hello, My name is vincent'
 
     # EXECUTE
-    tokens = make_tokens(blob, STOP_WORDS, PUNCTUATION)
+    tokens = make_tokens(blob)
     terms = make_ngrams(tokens)
     print(tokens)
     print(terms)
