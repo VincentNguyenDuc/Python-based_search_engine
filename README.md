@@ -8,6 +8,8 @@
   - [Technologies](#technologies)
   - [Set Up](#set-up)
   - [Usage](#usage)
+  - [Testing](#testing)
+  - [Going Further](#going-further)
 
 ## General Information
 
@@ -18,6 +20,7 @@
 
 - Python
 - Search engine
+- unittest
 
 ## Set Up
 
@@ -56,3 +59,15 @@ engine.index('email_4', {'text': 'How do you feel about becoming Management?\n\n
 engine.search('Peter')
 engine.search('tps report')
 ```
+
+## Testing
+
+To run all the test cases in the folder 'test', simply run:
+
+```bash
+python -m unittest
+```
+
+## Going Further
+
+I will try to use this project as a simple search engine for a web development project.

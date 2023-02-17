@@ -57,5 +57,20 @@ class TokenizationTest(unittest.TestCase):
         })
 
 
+    def test_hash_name(self):
+        self.assertEqual(tokenization.hash_name('hello'), '5d4140')
+        self.assertEqual(tokenization.hash_name('world'), '7d7930')
+        self.assertEqual(tokenization.hash_name('truly'), 'f499b3')
+        self.assertEqual(tokenization.hash_name('splendid'), '291e4e')
+        self.assertEqual(tokenization.hash_name('example'), '1a79a4')
+        self.assertEqual(tokenization.hash_name('some'), '03d59e')
+        self.assertEqual(tokenization.hash_name('tokens'), '25d718')
+        self.assertEqual(tokenization.hash_name('top'), 'b28354')
+        self.assertEqual(tokenization.hash_name('notch'), '9ce862')
+        self.assertEqual(tokenization.hash_name('really'), 'd2d92e')
+        self.assertEqual(tokenization.hash_name('notch', length=4), '9ce8')
+        self.assertEqual(tokenization.hash_name('really', length=8), 'd2d92eb9')
+
+
 if __name__ == '__main__':
     unittest.main()
