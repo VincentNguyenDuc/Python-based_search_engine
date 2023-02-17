@@ -201,7 +201,16 @@ if __name__ == '__main__':
     engine = PySearch(os.path.join(os.getcwd(), "SearchData"))
 
     # Index some data.
-    engine.index('email', {'text': "Peter,\n\nI'm going to need those TPS reports on my desk first thing tomorrow! And clean up your desk!\n\nLumbergh"})
+    engine.index('email_1', {
+             'text': "Peter,\n\nI'm going to need those TPS reports on my desk first thing tomorrow! And clean up your desk!\n\nLumbergh"})
+    engine.index('email_2', {
+             'text': 'Everyone,\n\nM-m-m-m-my red stapler has gone missing. H-h-has a-an-anyone seen it?\n\nMilton'})
+    engine.index('email_3', {
+             'text': "Peter,\n\nYeah, I'm going to need you to come in on Saturday. Don't forget those reports.\n\nLumbergh"})
+    engine.index(
+        'email_4', {'text': 'How do you feel about becoming Management?\n\nThe Bobs'})
+
+    print(engine.search('Peter'))
 
 
 
