@@ -15,6 +15,7 @@ class PathSetUp(object):
         self.index_path = os.path.join(self.base_directory, 'index')
         self.docs_path = os.path.join(self.base_directory, 'documents')
         self.stats_path = os.path.join(self.base_directory, 'stats.json')
+        self.temp_path = os.path.join(self.base_directory, 'temp')
         self.setup()
 
     def setup(self) -> bool:
