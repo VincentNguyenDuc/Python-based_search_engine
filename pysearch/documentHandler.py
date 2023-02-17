@@ -8,7 +8,7 @@ class DocumentHandler(PathSetUp):
     def __init__(self, base_directory) -> None:
         super().__init__(base_directory)
 
-    def _set_name(self, doc_id):
+    def set_name_docs(self, doc_id):
         """
         Constructs a path where the document should be stored from doc_id
         """
@@ -18,7 +18,7 @@ class DocumentHandler(PathSetUp):
         """
         Save the document
         """
-        doc_path = self._set_name(doc_id)
+        doc_path = self.set_name_docs(doc_id)
         base_path = os.path.dirname(doc_path)
 
         if not os.path.exists(base_path):
@@ -28,7 +28,7 @@ class DocumentHandler(PathSetUp):
             doc_file.write(json.dumps(document, ensure_ascii=False))
 
     def load_document(self, doc_id):
-        doc_path = self._set_name(doc_id)
+        doc_path = self.set_name_docs(doc_id)
 
         with open(doc_path, 'r') as doc_file:
             data = json.loads(doc_file.read())

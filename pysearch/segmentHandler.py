@@ -54,7 +54,7 @@ class SegmentHandler(PathSetUp):
     def __init__(self, base_directory) -> None:
         super().__init__(base_directory)
 
-    def _set_name(self, term):
+    def set_name_seg(self, term):
         """
         creates a segment filename based on the hash of the term.
 
@@ -75,10 +75,10 @@ class SegmentHandler(PathSetUp):
         determines whether the provided ``term_info`` should overwrite or
         update the data in the segment. Default is ``False`` (overwrite).
         """
-        seg_name = self._set_name(term)
+        seg_name = self.set_name_seg(term)
         new_seg_file = tempfile.NamedTemporaryFile(delete=False)
         written = False
-
+        
         if not os.path.exists(seg_name):
             # If it doesn't exist, touch it.
             with open(seg_name, 'w') as seg_file:
@@ -127,11 +127,10 @@ class SegmentHandler(PathSetUp):
         """
         Return term information associated with the term
         """
-        seg_name = self._set_name(term)
-        print(seg_name)
+        seg_name = self.set_name_seg(term)
 
         if not os.path.exists(seg_name):
-            return 'Directory not exist'
+            return 'segment not exist'
 
         with open(seg_name, 'r') as seg_file:
             for line in seg_file:
@@ -147,5 +146,4 @@ class SegmentHandler(PathSetUp):
 
 if __name__ == '__main__':
     sH = SegmentHandler(os.path.join(os.getcwd(), "SearchData"))
-    sH.save_segment('hello2', {'abcd':[1, 5]})
-    print(sH.load_segment('hello2'))
+    sH.save_segment('pet', {'pet':[0]})
