@@ -1,5 +1,7 @@
 import os
+import json
 
+__version__ = (1, 0, 0)
 
 class PathSetUp(object):
 
@@ -34,6 +36,54 @@ class PathSetUp(object):
             return True
 
         return False
+
+    def read_stats(self):
+        """
+        Reads the index-wide stats.
+        """
+        if not os.path.exists(self.stats_path):
+            return {
+                'version': '.'.join([str(bit) for bit in __version__]),
+                'total_docs': 0,
+            }
+
+        with open(self.stats_path, 'r') as stats_file:
+            return json.load(stats_file)
+
+    def write_stats(self, new_stats):
+        """
+        Writes the index-wide stats.
+
+        Takes a ``new_stats`` parameter, which should be a dictionary of
+        stat data. Example stat data::
+
+            {
+                'version': '1.0.0',
+                'total_docs': 25,
+            }
+        """
+        with open(self.stats_path, 'w') as stats_file:
+            json.dump(new_stats, stats_file)
+        return True
+
+    def increment_total_docs(self):
+        """
+        Increments the total number of documents the index is aware of.
+
+        This is important for scoring reasons & is typically called as part
+        of the indexing process.
+        """
+        current_stats = self.read_stats()
+        current_stats.setdefault('total_docs', 0)
+        current_stats['total_docs'] += 1
+        self.write_stats(current_stats)
+
+    def get_total_docs(self):
+        """
+        Returns the total number of documents the index is aware of.
+        """
+        current_stats = self.read_stats()
+        return int(current_stats.get('total_docs', 0))
 
 
 if __name__ == '__main__':
