@@ -1,10 +1,11 @@
-from pathsSetUp import PathSetUp
-import tokenization
 import os
 import json
 
+from . import pathsSetUp
+from . import tokenization
 
-class DocumentHandler(PathSetUp):
+
+class DocumentHandler(pathsSetUp.PathSetUp):
     def __init__(self, base_directory) -> None:
         super().__init__(base_directory)
 

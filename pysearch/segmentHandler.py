@@ -1,10 +1,11 @@
-import tokenization
 import os
 import json
-from pathsSetUp import PathSetUp
 import tempfile
 import shutil
 
+
+from . import pathsSetUp
+from . import tokenization
 
 
 def _parse_record(line):
@@ -49,7 +50,7 @@ def _update_term_info(orig_info, new_info):
     return orig_info
 
 
-class SegmentHandler(PathSetUp):
+class SegmentHandler(pathsSetUp.PathSetUp):
 
     def __init__(self, base_directory) -> None:
         super().__init__(base_directory)

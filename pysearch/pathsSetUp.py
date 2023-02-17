@@ -3,8 +3,9 @@ import json
 
 __version__ = (1, 0, 0)
 
-class PathSetUp(object):
 
+class PathSetUp(object):
+    
     def __init__(self, base_directory) -> None:
         """Initialize the folders
 

@@ -1,9 +1,9 @@
-from segmentHandler import SegmentHandler
-from documentHandler import DocumentHandler
 import math
-import tokenization
 import os
 
+from . import segmentHandler
+from . import documentHandler
+from . import tokenization
 
 def bm25_relevance(terms, matches, current_doc, total_docs, b=0, k=1.2):
     """
@@ -40,7 +40,7 @@ def bm25_relevance(terms, matches, current_doc, total_docs, b=0, k=1.2):
     return 0.5 + score / (2 * len(terms))
 
 
-class PySearch(DocumentHandler, SegmentHandler):
+class PySearch(documentHandler.DocumentHandler, segmentHandler.SegmentHandler):
 
     def __init__(self, base_directory) -> None:
         super().__init__(base_directory)
